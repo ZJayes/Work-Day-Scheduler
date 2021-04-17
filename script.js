@@ -35,6 +35,26 @@ for (var i = 0; i < allTextRows.length; i++){
 }
 
 
+function colors (){
+    var presentHour= false;
+    for (var i = 0; i < allHours.length; i++){
+        if(currentHour !== allHours[i] && presentHour === true){
+            document.getElementById(allHours[i]).
+            firstElementChild.nextElementSibling.className += "future"
+        }
+        else if (currentHour === allHours[i]){
+            presentHourRendered = true;
+            document.getElementById(allHours[i]).
+            firstElementChild.nextElementSibling.className += "present"
+        }
+        else {
+            document.getElementById(allHours[i]).
+            firstElementChild.nextElementSibling.className += "past"
+        }
+    }
+}
+
+colors()
 
 
 
