@@ -1,56 +1,49 @@
-var day = moment().format('LL');
-var time = moment().format('LT');
-var currentHour = time.split(':')[0]
-var allHours = ['9','10', '11', '12', '1', '2', '3', '4', '5'] 
+var currentDay = document.getElementById("currentDay")
+var currentTime = document.getElementById("currentTime")
+var theDay = moment().format('dddd');  
+var rightNow = moment().format('LL');
+var theTime = moment().format('LT');
+//taking the current time and rounding it down to the whole hour
+var currentHour = theTime.split(":")[0]
+//creating an array for each time table
+var allHours = ["9","10","11","12","1","2","3","4","5"]
+//Added the current date and time to Work Day Scheduler header 
+currentDay.textContent = rightNow
+currentTime.textContent = theTime
+//selecting each time table and saving them into variables
+var nine = $("#9AM")
+var ten = $("#10AM")
+var eleven = $("#11AM")
+var twelve = $("#12PM")
+var one = $("#1PM")
+var two = $("#2PM")
+var three = $("#3PM")
+var four = $("#4PM")
+var five = $("#5PM")
+//saving all the time tables into an array
+var allTextRows = [nine, ten, eleven, twelve, one, two, three, four, five]
 
-
-console.log('time', currentTime, typeof(currentTime))
-console.log(currentHour)
-
-
-function time(currentTime){
-
-} 
-
-//updates the current date and time
-$('#currentDay').text(day)
-$('#currentTime').text(time)
-
-
-$('.nineBtn').on('click',function (e){
-    var userInput = $('#nineText').val();
-    e.preventDefault();
-    localStorage.setItems('nine', userInput);
+$(".saveBtn").on("click", function(event){
+    event.preventDefault();
+    for(var i = 0; i < allTextRows.length; i++){
+        localStorage.setItem(allTextRows[i].attr("id"), allTextRows[i].val())
+    }
 })
 
 
-function presentTime(){
-   // console.log(currentHour)
-    //console.log($(`#${currentHour}`).children()[1])
-   // var hour = $(`#${currentHour}`).children()[1]
-    //hour.css()
-
-
-    //$(`#${currentHour}`).children()[1].attr('style', 'background-color:#ff6961')
-    //document.getElementById(currentHour).style.backgroundColor = '#ff6961'
-
-    //document.getElementById(currentHour).classList.add("present")
-    $(`#${currentHour}`).addClass('present')
-    //hour.css()
-    //console.log($(`#${currentHour}`))
- 
 
 
 
 
 
-}
 
 
 
 
 
-presentTime()
+
+
+
 
   
 
